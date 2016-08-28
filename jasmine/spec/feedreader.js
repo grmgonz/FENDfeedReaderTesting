@@ -73,10 +73,9 @@ describe('Initial Entries', function() {
 
 
 /*TEST 6: Menu Changes Visibility When it's Icon is Clicked*/
-    it('have at least one entry.', function(done) {
+    it('have at least one entry.', function() {
         var entries = $('.feed .entry').length;
         expect(entries).toBeGreaterThan(0);
-        done();
         });
     });
 
@@ -84,20 +83,29 @@ describe('Initial Entries', function() {
 /*New Feed Selection TEST SUITE*/
 /*Done() is used as a callback to load feeds before tests are run */
 describe('New Feed Selection', function() {
-    var feed;
+    var oldFeed;
+    var newFeed;
 
 
 /*TEST 7: Content Changes When New Feed is Loaded*/
     beforeEach(function(done) {
-        feed = $('.feed').html();
+        oldFeed = $('.feed').html();
+        loadFeed(0, function() {
+        console.log('loadFeed is finished')
+
+
         loadFeed(1, function() {
         done();
         });
     });
+});
+
+
 
     it('changes the content displayed.', function(done) {
-        var changed = $('.feed').html();
-        expect(feed).not.toBe(changed);
+        newFeed = $('.feed').html();
+        expect(oldFeed).not.toBe(newFeed);
+
         done();
         });
     });
