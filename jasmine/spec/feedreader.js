@@ -9,31 +9,31 @@
  * to ensure they don't run until the DOM is ready.
  */
  $(function() {
-
+    'use strict';
 
 /*RSS Feeds Definitions TEST SUITE*/
 describe('RSS Feeds.', function() {
 
 
 /*TEST 1: RSS Feeds are Defined*/
-it('are defined.', function() {
-    expect(allFeeds).toBeDefined();
-    expect(allFeeds.length).not.toBe(0);
-    });
+    it('are defined.', function() {
+        expect(allFeeds).toBeDefined();
+        expect(allFeeds.length).not.toBe(0);
+        });
 
 
 /*TEST 2: RSS Feed URLS are Defined*/
-it('have URLs defined.', function() {
-    expect(allFeeds).toBeDefined();
-    expect(allFeeds.length).not.toBe(0);
-    });
+    it('have URLs defined.', function() {
+        expect(allFeeds).toBeDefined();
+        expect(allFeeds.length).not.toBe(0);
+        });
 
 
 /*TEST 3: RSS Feeds Names Are Defined & Aren't Empty*/
-it('have a name defined and names are not empty.', function() {
-    allFeeds.forEach(function(feed) {
-        expect(feed.name).toBeDefined();
-        expect(feed.name).not.toBe(true);
+    it('have a name defined and names are not empty.', function() {
+        allFeeds.forEach(function(feed) {
+            expect(feed.name).toBeDefined();
+            expect(feed.name).not.toBe(true);
         });
     });
 });
@@ -46,18 +46,18 @@ describe('The Menu', function() {
 
 
 /*TEST 4: Menu Element is Hidden by Default */
-it('is hidden by default.', function() {
-    expect(body.hasClass('menu-hidden')).toBe(true);
+    it('is hidden by default.', function() {
+        expect(body.hasClass('menu-hidden')).toBe(true);
     });
 
 
 /*TEST 5: Menu Changes Visibility When it's Icon is Clicked*/
-it('changes visibility when icon is clicked.', function() {
-    menuIcon.click();
-    expect(body.hasClass('menu-hidden')).toBe(false);
+    it('changes visibility when icon is clicked.', function() {
+        menuIcon.click();
+        expect(body.hasClass('menu-hidden')).toBe(false);
 
-    menuIcon.click();
-    expect(body.hasClass('menu-hidden')).toBe(true);
+        menuIcon.click();
+        expect(body.hasClass('menu-hidden')).toBe(true);
      });
 });
 
@@ -67,16 +67,15 @@ it('changes visibility when icon is clicked.', function() {
 describe('Initial Entries', function() {
     beforeEach(function(done) {
         loadFeed(0, function() {
-
-        done();
+            done();
+        });
     });
-});
 
 
 /*TEST 6: Menu Changes Visibility When it's Icon is Clicked*/
-it('have at least one entry.', function() {
-    var entries = $('.feed .entry').length;
-    expect(entries).toBeGreaterThan(0);
+    it('have at least one entry.', function() {
+        var entries = $('.feed .entry').length;
+        expect(entries).toBeGreaterThan(0);
     });
 });
 
@@ -89,21 +88,21 @@ describe('New Feed Selection', function() {
 
 
 /*TEST 7: Content Changes When New Feed is Loaded*/
-beforeEach(function(done) {
-    oldFeed = $('.feed').html();
-    loadFeed(0, function() {
-    console.log('loadFeed is finished');
-    loadFeed(1, function() {
-    done();
+    beforeEach(function(done) {
+        oldFeed = $('.feed').html();
+        loadFeed(1, function() {
+            console.log('loadFeed is finished');
+            loadFeed(2, function() {
+                done();
+            });
+        });
     });
-    });
-});
 
 
-it('changes the content displayed.', function(done) {
-    newFeed = $('.feed').html();
-    expect(oldFeed).not.toBe(newFeed);
-    done();
+    it('changes the content displayed.', function(done) {
+        newFeed = $('.feed').html();
+        expect(oldFeed).not.toBe(newFeed);
+        done();
     });
 });
 }());
