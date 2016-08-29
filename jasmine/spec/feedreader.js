@@ -66,9 +66,9 @@ describe('The Menu', function() {
 /*Done() is used as a callback to load feeds before tests are run */
 describe('Initial Entries', function() {
     beforeEach(function(done) {
-        loadFeed(0, function() {
-        done();
-        });
+    loadFeed(0, function() {
+    done();
+    });
     });
 
 
@@ -91,22 +91,18 @@ describe('New Feed Selection', function() {
     beforeEach(function(done) {
         oldFeed = $('.feed').html();
         loadFeed(0, function() {
-        console.log('loadFeed is finished')
-
-
+        console.log('loadFeed is finished');
         loadFeed(1, function() {
         done();
         });
+        });
     });
-});
-
 
 
     it('changes the content displayed.', function(done) {
         newFeed = $('.feed').html();
         expect(oldFeed).not.toBe(newFeed);
-
         done();
-        });
     });
+});
 }());
