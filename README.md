@@ -1,5 +1,6 @@
-# Project 6: Feed Reader Testing #
-
+# Udacity's Front-End Web Developer Nanodegree Project 6: Feed Reader Testing #
+I wrote comprehensive unit tests, using the Jasmine testing framework, 
+for an RSS Feed Reader application that uses Google's RSS API.
 
 ## Run Project ##
 * Clone or download zip file and open index.html.
